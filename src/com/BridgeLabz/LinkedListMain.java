@@ -64,6 +64,20 @@ public class LinkedListMain {
             System.out.println("node"+node.data+"present position"+length);
         }
     }
+    //insertNode Method Is Created To Insert a New Node After Or At Certain Position In Linked List
+    public void insertNode(int data) {
+        Node pointer = head;
+        System.out.println("Enter the data need to add");
+        Node newNode = new Node(Sc.nextInt());
+        //ptr traverse till given node data after that need to inser the newnode in the linkedlist
+        while(pointer.data != data)
+        {
+            pointer = pointer.next;
+        }
+        //newNode point to ptr.next
+        newNode.next = pointer.next;
+        pointer.next = pointer;           //ptr.next now point to the newnode
+    }
 
     public static void main(String args[]) {
         System.out.println("welcome to linked list");
@@ -96,5 +110,7 @@ public class LinkedListMain {
         }
         System.out.println();
         linkedList.searchNode(56);
+        linkedList.insertNode(30);
+        linkedList.display();
     }
 }
