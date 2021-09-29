@@ -1,5 +1,7 @@
 package com.BridgeLabz;
 
+import java.util.Scanner;
+
 public class LinkedListMain {
     static Node head;
 
@@ -34,7 +36,7 @@ public class LinkedListMain {
         }
     }
     //This Method Is Used To Pop Head
-    public static void pop(){
+    public static void popFirstNode(){
         Node temp =head;
         if(head == null) {
             System.out.println("linked list does not have data");
@@ -43,17 +45,42 @@ public class LinkedListMain {
             head = head.next;
         }
     }
+    public  void popLastNode() {
+        Node node = head;
+        Node tail = head;
+        while (tail.next.next != null)
+            tail = tail.next;
+        tail.next = null;
+    }
+
     public static void main(String args[]) {
         System.out.println("welcome to linked list");
+        Scanner Sc = new Scanner(System.in);
         LinkedListMain linkedList = new LinkedListMain();
         System.out.println("LinkedList Data");
         linkedList.addNode(56);
         linkedList.addNode(30);
         linkedList.addNode(70);
         linkedList.display();
-        System.out.println("\nLinkedList Data After Popping");
-        linkedList.pop();
-        linkedList.display();
 
+        Boolean Val = true;
+        while(Val){
+            System.out.println("\n 1.PopFirst \n 2.PopLast \n 3.Exit ");
+            int Condition = Sc.nextInt();
+            switch(Condition){
+                case 1:
+                    System.out.println("\nLinkedList Data After Popping First Node");
+                    linkedList.popFirstNode();
+                    linkedList.display();
+                    break;
+                case  2:
+                    System.out.println("\nLinkedList Data After Popping Last Node");
+                    linkedList.popLastNode();
+                    linkedList.display();
+                    break;
+                default:
+                    Val = false;
+            }
+        }
     }
 }
