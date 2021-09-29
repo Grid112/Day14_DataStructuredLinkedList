@@ -1,9 +1,7 @@
 package com.BridgeLabz;
 
-import java.util.Scanner;
-
 public class LinkedListMain {
-    Node head;
+    static Node head;
 
     //Add Node Method Is Created To Add Nodes To LinkedList
     public void addNode(int data){
@@ -35,12 +33,37 @@ public class LinkedListMain {
             System.out.print("->"+node.data);
         }
     }
+    static void insertAtMid(int N){
+        if (head == null)
+            head = new Node(N);
+        else {
+            Node newNode = new Node(N);
+
+            Node pointer = head;
+            int lenght = 0;
+            while (pointer != null) {
+                lenght++;
+                pointer = pointer.next;
+            }
+            int count = ((lenght % 2) == 0) ? (lenght / 2) :
+                    (lenght + 1) / 2;
+            pointer = head;
+            while (count-- > 1)
+                pointer = pointer.next;
+            // insert the 'newNode' and adjust
+            // the required links
+            newNode.next = pointer.next;
+            pointer.next = newNode;
+        }
+    }
     public static void main(String args[]) {
         System.out.println("welcome to linked list");
         LinkedListMain linkedList = new LinkedListMain();
-        linkedList.addNode(70);
-        linkedList.addNode(30);
-        linkedList.addNode(56);
+        head = null;
+        head = new Node(56);
+        head.next = new Node(70);
+
+        insertAtMid(30);
         linkedList.display();
 
     }
