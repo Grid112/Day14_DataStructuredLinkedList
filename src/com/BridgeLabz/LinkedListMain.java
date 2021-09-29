@@ -33,37 +33,26 @@ public class LinkedListMain {
             System.out.print("->"+node.data);
         }
     }
-    static void insertAtMid(int N){
-        if (head == null)
-            head = new Node(N);
+    //This Method Is Used To Pop Head
+    public static void pop(){
+        Node temp =head;
+        if(head == null) {
+            System.out.println("linked list does not have data");
+        }
         else {
-            Node newNode = new Node(N);
-
-            Node pointer = head;
-            int lenght = 0;
-            while (pointer != null) {
-                lenght++;
-                pointer = pointer.next;
-            }
-            int count = ((lenght % 2) == 0) ? (lenght / 2) :
-                    (lenght + 1) / 2;
-            pointer = head;
-            while (count-- > 1)
-                pointer = pointer.next;
-            // insert the 'newNode' and adjust
-            // the required links
-            newNode.next = pointer.next;
-            pointer.next = newNode;
+            head = head.next;
         }
     }
     public static void main(String args[]) {
         System.out.println("welcome to linked list");
         LinkedListMain linkedList = new LinkedListMain();
-        head = null;
-        head = new Node(56);
-        head.next = new Node(70);
-
-        insertAtMid(30);
+        System.out.println("LinkedList Data");
+        linkedList.addNode(56);
+        linkedList.addNode(30);
+        linkedList.addNode(70);
+        linkedList.display();
+        System.out.println("\nLinkedList Data After Popping");
+        linkedList.pop();
         linkedList.display();
 
     }
