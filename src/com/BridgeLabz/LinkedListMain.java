@@ -52,6 +52,18 @@ public class LinkedListMain {
             tail = tail.next;
         tail.next = null;
     }
+    //SearchNode Method is Used To Search For Required Nodes
+    public void searchNode(int data){
+        Node node = head;
+        int length=0;
+        while(node.data != data) {
+            node = node.next;
+            length++;
+        }
+        if(node.data == data){
+            System.out.println("node"+node.data+"present position"+length);
+        }
+    }
 
     public static void main(String args[]) {
         System.out.println("welcome to linked list");
@@ -82,5 +94,7 @@ public class LinkedListMain {
                     Val = false;
             }
         }
+        System.out.println();
+        linkedList.searchNode(56);
     }
 }
